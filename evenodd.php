@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    <?php
+    include "./styles/styles.css";
+    ?>
+  </style>
+  <!-- <link rel="stylesheet" href="./styles/styles.css" /> -->
+  <title>Web Development with PHP & Laravel</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="./images/logo.png" alt="logo" />
+      <h1>Assignment Task NO: 04</h1>
+    </div>
+    <div class="card">
+      <form method="post" action="" id="calcForm">
+        <div class="input">
+          <div class="bill-container">
+            <div class="label-wrapper">
+              <label for="inp-bill">First Number</label>
+            </div>
+            <div class="inp-wrapper">
+              <input class="inp-text" type="number" name="firstNumber" id="inp-bill" placeholder="0.0" required />
+              <!-- <img src="./images/icon-dollar.svg" alt="dollar-icon" /> -->
+            </div>
+          </div>
+          <div class="tip-container">
+            <div class="label-wrapper">
+              <label for="inp-tip">Press The Button</label>
+            </div>
+            <div class="btn-wrapper">
+              <button class="btn reset" name="operator" value="add"> Check </button>
+
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="output">
+        <div class="line-wrapper">
+          <div class="line-output">
+            <div class="title-wrapper">
+              <div class="title">Given Number Is : </div>
+              <div class="desc"> Even / Odd</div>
+            </div>
+            <div class="tittle_answer">
+              <?php
+              if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset( $_POST["firstNumber"] ) && isset( $_POST["operator"] )) {
+                  $firstNumber = $_POST["firstNumber"];
+                  $operator = $_POST["operator"];
+
+                  if ($firstNumber % 2 == 0) {
+                    printf( "%s", "Even" );
+                  }
+                  else {
+                    printf( "%s", "Odd" );
+                  }
+                }
+              }
+              ?>
+            </div>
+          </div>
+        </div>
+        <div class="btn reset" onclick="resetform()">Reset</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <script src="./js/app.js"></script> -->
+  <script>
+    function resetform() {
+      document.getElementById("calcForm").reset();
+    }
+  </script>
+</body>
+
+</html>
